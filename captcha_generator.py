@@ -24,6 +24,8 @@ except:
 #--------------------------------------------------------------------------------------------------------------------
 
 DataSet_path = "./DataSet/"         # file_path -> Sets the folder path where the captchas are going to be saved
+c_width = 280
+c_height = 90
 
 if os.path.exists(DataSet_path):    # checks that the folder exists
     os.rmdir(DataSet_path)
@@ -38,7 +40,7 @@ def main():
     random.seed(a=None, version=2)
 
     # Create an image instance of the given size
-    image = ImageCaptcha(width = 280, height = 90)
+    image = ImageCaptcha(c_width, c_height)
     percentage = 0
     # Image captcha text
     for i in range(DataSet_size):
@@ -54,7 +56,7 @@ def main():
             if r_type == 1:
                 num = random.randint(48, 57)        # num -> Get random from 48 to 57, converts to ascii with chr()
                 captcha_text += chr(num)
-            elif r_type == 1:                          
+            elif r_type == 2:                          
                 Upper = random.randint(65, 90)      # Upper -> Get random from 65 to 90, converts to ascii with chr()
                 captcha_text += chr(Upper)
             else:
